@@ -13,14 +13,14 @@
     <section>
         <ul>
             <li><a href="cad_prod.html">Create</a></li>
-            <li><a href="#">Select all</a></li>
+            <li><a href="select_prod.php">Select all</a></li>
             <li><a href="#">Update</a></li>
             <li><a href="#">Remove</a></li>
         </ul>
     </section>
     
     <?php
-$conn = mysqli_connect("localhost", "root", "Summer1945", "crud");
+$conn = mysqli_connect("localhost", "root", "", "crud");
 
 if (!$conn) {
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -38,9 +38,6 @@ $productData = array();
 while ($row = mysqli_fetch_array($result)) {
     $productData[] = $row;
     $totalVal = $row['total'];
-    $vlTraffic = $row['trafficValue'];
-    // lucro = valor total - valor do trafego 
-    $profit = $totalVal - $vlTraffic;
     $sumAllProducts += $totalVal;
 }
 
@@ -67,21 +64,20 @@ while ($row = mysqli_fetch_array($result)) {
             ?>
                 <tr>
                     <td><?php echo $row['id']; ?></td>
-                    <td><?php echo $row['codes']; ?></td>
+                    <td><?php echo isset($row['codes']) ? $row['codes'] : ''; ?></td>
                     <td><?php echo $row['names']; ?></td>
                     <td><?php echo $row['color']; ?></td>
                     <td><?php echo $row['qtd']; ?></td>
                     <td><p>R$ <?php echo $row['price']; ?></p></td>
-                    <td><?php echo $row['dates']; ?></td>
                     <td><p>R$ <?php echo $row['total']; ?></p></td>
                     <td>
-                        <form action="update.php" method="post">
+                        <form action="formUpdate.php" method="post">
                             <input type="hidden" name="id" value="<?php echo $row['id']; ?>" />
                             <button type="submit" name="botaltprod" value="ok">Update</button>
                         </form>
                     </td>
                     <td>
-                        <form action="removeProd.php" method="post">
+                        <form action="remove.php" method="post">
                             <input type="hidden" name="id" value="<?php echo $row['id']; ?>" />
                             <button type="submit" name="botaltprod" value="ok">Remove</button>
                         </form>

@@ -14,7 +14,7 @@
 
         $sql = "INSERT INTO tb_employees(names, cpf, age, office) VALUES ('$names','$cpf','$age','$office')";
 
-        $conn = mysqli_connect("localhost","root","Summer1945","crud");
+        $conn = mysqli_connect("localhost","root","","crud");
         if(!$conn){
             die("Failed to MySQL connect: ". mysqli_connect_error());
         }

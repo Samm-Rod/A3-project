@@ -15,7 +15,7 @@
 
         $sql = "INSERT INTO tb_supplier(company, zip, supplier, cnpj) VALUES ('$company','$zip','$supplier','$cnpj')";
 
-        $conn = mysqli_connect("localhost","root","Summer1945","crud");
+        $conn = mysqli_connect("localhost","root","","crud");
         if(!$conn){
             die("Failed to MySQL connect: ". mysqli_connect_error());
         }

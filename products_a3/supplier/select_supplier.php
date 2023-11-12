@@ -20,7 +20,7 @@
     </section>
     
     <?php
-$conn = mysqli_connect("localhost", "root", "Summer1945", "crud");
+$conn = mysqli_connect("localhost", "root", "", "crud");
 
 if (!$conn) {
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -65,13 +65,13 @@ while ($row = mysqli_fetch_array($result)) {
                     <td><?php echo $row['supplier']; ?></td>
                     <td><?php echo $row['cnpj']; ?></td>
                     <td>
-                        <form action="update.php" method="post">
+                        <form action="formUpdate.php" method="post">
                             <input type="hidden" name="id" value="<?php echo $row['id']; ?>" />
                             <button type="submit" name="botaltprod" value="ok">Update</button>
                         </form>
                     </td>
                     <td>
-                        <form action="removeProd.php" method="post">
+                        <form action="remove.php" method="post">
                             <input type="hidden" name="id" value="<?php echo $row['id']; ?>" />
                             <button type="submit" name="botaltprod" value="ok">Remove</button>
                         </form>
